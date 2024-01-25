@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-import hidden_4
 if __name__ == '__main__':
-    def_names = dir(hidden_4)
-    for i in range(len(def_names)):
-        if def_names[i][:2] != '__':
-            print(def_names[i])
+    import hidden_4
+    nameslist = dir(hidden_4)
+    for name in nameslist:
+        if "__" != name[:2]:
+            print(name)
