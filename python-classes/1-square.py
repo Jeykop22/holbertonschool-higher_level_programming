@@ -3,6 +3,7 @@
 Create class Square
 """
 
+
 class Square:
     """
     define Square by size

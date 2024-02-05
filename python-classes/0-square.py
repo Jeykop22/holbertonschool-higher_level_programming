@@ -3,6 +3,7 @@
 Create  empty class Square
 """
 
+
 class Square:
     """
     define Square
