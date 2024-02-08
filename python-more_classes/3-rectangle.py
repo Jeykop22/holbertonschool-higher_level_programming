@@ -6,7 +6,12 @@ class Rectangle:
     """Represent a rectangle."""
 
     def __init__(self, width=0, height=0):
-        """Initialize a new Rectangle."""
+        """Initialize a new Rectangle.
+
+        Args:
+            width (int): The width of the new rectangle.
+            height (int): The height of the new rectangle.
+        """
         self.width = width
         self.height = height
 
@@ -45,3 +50,14 @@ class Rectangle:
         if self.__width == 0 or self.__height == 0:
             return (0)
         return ((self.__width * 2) + (self.__height * 2))
+
+    def __str__(self):
+        """print string with character #"""
+        if self.__width == 0 or self.__height == 0:
+            return ""
+        line = []
+        for i in range(self.__height):
+            [line.append("#") for j in range(self.__width)]
+            if i != self.__height - 1:
+                    line.append("\n")
+        return ("".join(line))
