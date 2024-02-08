@@ -1,12 +1,10 @@
 #!/usr/bin/python3
 """
-Create  empty class Rectangle
+    Empty class named Rectangle
 """
 
 
 class Rectangle:
-    """
-    define Rectangle
-    """
     def __init__(self):
+        """ Function that creates an instance of Rectangle """
         pass
