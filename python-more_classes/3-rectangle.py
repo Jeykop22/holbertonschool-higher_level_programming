@@ -55,9 +55,9 @@ class Rectangle:
         """print string with character #"""
         if self.__width == 0 or self.__height == 0:
             return ""
-        line = []
+        rect = []
         for i in range(self.__height):
-            [line.append("#") for j in range(self.__width)]
+            [rect.append("#") for j in range(self.__width)]
             if i != self.__height - 1:
-                line.append("\n")
-        return ("".join(line))
+                rect.append("\n")
+        return ("".join(rect))
