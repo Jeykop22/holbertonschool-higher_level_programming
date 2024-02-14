@@ -1,0 +1,136 @@
+##########################################################
+This file is a DOCTEST for the module "7-base_geometry.py"
+##########################################################
+
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+>>> base = BaseGeometry()
+
+##### VALID CASES #####
+
+    ### test with integer > 0
+    >>> base.integer_validator("int", 1)
+    >>>
+
+    >>> base.integer_validator("int", 150)
+    >>>
+
+    >>> base.integer_validator("int", int("50"))
+    >>>
+
+    # test with integer tuple #
+    >>> base.integer_validator("tuple", (1))
+    >>>
+
+    # test with binary #
+    >>> base.integer_validator("binary", 0b110)
+    >>>
+
+    # test with hexadecimal#
+    >>> base.integer_validator("hexa", 0x05)
+    >>>
+
+
+##### ERROR CASES #####
+
+    # test with 0 #
+    >>> base.integer_validator("int", 0)
+    Traceback (most recent call last):
+    ...
+    ValueError: int must be greater than 0
+
+    # test with negative integer #
+    >>> base.integer_validator("int", -1)
+    Traceback (most recent call last):
+    ...
+    ValueError: int must be greater than 0
+
+    # test with complexe number #
+    >>> base.integer_validator("comp", 5j)
+    Traceback (most recent call last):
+    ...
+    TypeError: comp must be an integer
+
+    # test with positive float #
+    >>> base.integer_validator("float", 5.5)
+    Traceback (most recent call last):
+    ...
+    TypeError: float must be an integer
+
+    # test with negative float #
+    >>> base.integer_validator("float", -5.5)
+    Traceback (most recent call last):
+    ...
+    TypeError: float must be an integer
+
+    # test with cast 'nan' in float #
+    >>> base.integer_validator("float", float('nan'))
+    Traceback (most recent call last):
+    ...
+    TypeError: float must be an integer
+
+    # test with booleen #
+    >>> base.integer_validator("bool", True)
+    Traceback (most recent call last):
+    ...
+    TypeError: bool must be an integer
+
+    # test with string #
+    >>> base.integer_validator("string", "True")
+    Traceback (most recent call last):
+    ...
+    TypeError: string must be an integer
+
+    # test with empty string #
+    >>> base.integer_validator("string", "")
+    Traceback (most recent call last):
+    ...
+    TypeError: string must be an integer
+
+    # test with empty list #
+    >>> base.integer_validator("list", [])
+    Traceback (most recent call last):
+    ...
+    TypeError: list must be an integer
+
+    # test with integer list #
+    >>> base.integer_validator("list", [1])
+    Traceback (most recent call last):
+    ...
+    TypeError: list must be an integer
+
+    # test with empty tuple #
+    >>> base.integer_validator("tuple", ())
+    Traceback (most recent call last):
+    ...
+    TypeError: tuple must be an integer
+
+    # test with few integers tuple #
+    >>> base.integer_validator("tuple", (1, 2))
+    Traceback (most recent call last):
+    ...
+    TypeError: tuple must be an integer
+
+    # test with empty dict #
+    >>> base.integer_validator("dict", {})
+    Traceback (most recent call last):
+    ...
+    TypeError: dict must be an integer
+
+
+### DOCSTRING TEST ###
+
+    >>> modulo_doc = __import__('7-base_geometry').__doc__
+    >>> print(len(modulo_doc) > 0)
+    True
+
+    >>> class_doc = __import__('7-base_geometry').BaseGeometry.__doc__
+    >>> print(len(class_doc) > 0)
+    True
+
+    >>> area_doc = __import__('7-base_geometry').BaseGeometry.area.__doc__
+    >>> print(len(area_doc) > 0)
+    True
+
+    >>> validate_doc = __import__('7-base_geometry').BaseGeometry.integer_validator.__doc__
+    >>> print(len(validate_doc) > 0)
+    True
