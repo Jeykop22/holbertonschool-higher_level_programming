@@ -4,7 +4,6 @@
 
 class BaseGeometry:
     """Represent base geometry."""
-
     def area(self):
         """Not implemented."""
         raise Exception("area() is not implemented")
@@ -13,6 +12,6 @@ class BaseGeometry:
         """validate a parameter as an integer"""
         if value is not int:
             raise TypeError("{} must be an integer".format(name))
-        if value <= 0:
+        elif value <= 0:
             raise ValueError("{} must be greater than 0".format(name))
         self.value = value
