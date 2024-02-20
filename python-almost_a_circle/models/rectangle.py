@@ -80,3 +80,17 @@ class Rectangle(Base):
     def area(self):
         """Return the area of the Rectangle."""
         return (self.__width * self.__height)
+
+    def display(self):
+        """print rectangle instance with "#" """
+        for blankline in range(self.y):
+            print("")
+        for index in range(self.height):
+            print(" " * self.x, end="")
+            print("#" * self.width)
+
+    def __str__(self):
+        """Overwritting the str method"""
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.x, self.y,
+                                                       self.width, self.height)
+    
