@@ -1,33 +1,42 @@
 #!/usr/bin/python3
 """
-    Script that takes in arguments and displays all values in the states
-    table of hbtn_0e_0_usa where name matches the argument.
-    Safe from MySQL injections
+This script takes in an argument and
+displays all values in the states
+where `name` matches the argument
+from the database `hbtn_0e_0_usa`.
+
+This time the script is safe from
+MySQL injections!
 """
+
 import MySQLdb
-import sys
+from sys import argv
 
+if __name__ == '__main__':
+    """
+    Access to the database and get the states
+    from the database.
+    """
 
-def filter_states_by_name_safe(username, password, database, state_name):
-    db = MySQLdb.connect(host="localhost", port=3306, user=username,
-                         passwd=password, db=database)
-    cursor = db.cursor()
+    db = MySQLdb.connect(host="localhost", user=argv[1], port=3306,
+                         passwd=argv[2], db=argv[3])
 
-    sql_query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC"
-    cursor.execute(sql_query, (state_name,))
-    states = cursor.fetchall()
+    with db.cursor() as cur:
+        cur.execute("""
+            SELECT
+                *
+            FROM
+                states
+            WHERE
+                name LIKE BINARY %(name)s
+            ORDER BY
+                states.id ASC
+        """, {
+            'name': argv[4]
+        })
 
-    for state in states:
-        print(state)
+        rows = cur.fetchall()
 
-    cursor.close()
-    db.close()
-
-
-if __name__ == "__main__":
-    username = sys.argv[1]
-    password = sys.argv[2]
-    database = sys.argv[3]
-    state_name = sys.argv[4]
-
-    filter_states_by_name_safe(username, password, database, state_name)
+    if rows is not None:
+        for row in rows:
+            print(row)
